@@ -5,6 +5,9 @@
   "devDependencies": {
     "@types/bun": "latest"
   },
+  "scripts": {
+    "build":"bun install && cd client && bun install && bun run build",
+    "start": "bun run api/index.js"},
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
