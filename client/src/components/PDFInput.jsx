@@ -2,6 +2,8 @@ import React, { FormEvent, useState } from "react";
 import { LuLoader2 } from "react-icons/lu";
 import axios from "axios";
 import pdfToText from "react-pdftotext";
+import { useContext } from "react";
+import { ChatContext } from "../context/ChatContextProvider";
 
 const PDFInput = ({
   text,
@@ -16,6 +18,7 @@ const PDFInput = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
+  const { chatText, setChatText } = useContext(ChatContext);
   const handleFileChange = (event) => {
     if (event.target.files) {
       const file = event.target.files[0];
@@ -29,6 +32,7 @@ const PDFInput = ({
     pdfToText(file)
       .then((text) => {
         setText(text);
+        setChatText(text);
         setInput(text);
       })
       .catch((error) => console.error("Failed to extract text from pdf"));
