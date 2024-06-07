@@ -16,17 +16,15 @@ const Navbar = () => {
   }, []);
   return (
     <>
-      <nav className="bg-white fixed  left-0 top-0 right-0 w-full z-40 border-b">
+      <nav className="bg-white fixed  left-0 top-0 right-0 w-full z-40 ">
         <div className="mx-auto max-w-full px-3">
           <div className="relative flex h-16 items-center justify-between">
             <div className="flex flex-shrink-0 items-center">
-              <a href="/" className="text-xl sm:flex hidden font-semibold mx-3">
+              <a href="/" className="text-xl  font-semibold mx-3">
                 LinguifyAI
               </a>
             </div>
-            <div className="inset-y-0 flex items-center sm:hidden">
-              {/* Mobile menu button */}
-              <button
+            {/* <button
                 type="button"
                 onClick={() => setShowMenu(!showMenu)}
                 className={`relative inline-flex items-center justify-center rounded-md p-1 hover:bg-gray-900 hover:text-white focus:outline-none ${
@@ -64,18 +62,17 @@ const Navbar = () => {
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
-              </button>
-            </div>
+              </button> */}
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
-                  <Link
+                  {/* <Link
                     to="/"
                     className="text-gray-900 hover:text-gray-950 font-medium"
                   >
                     Home
-                  </Link>
-                  <Link
+                  </Link> */}
+                  {/* <Link
                     to="/about"
                     className="text-gray-900 hover:text-gray-950 font-medium"
                   >
@@ -86,7 +83,7 @@ const Navbar = () => {
                     className="text-gray-900 hover:text-gray-950 font-medium"
                   >
                     Contact
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>
@@ -94,12 +91,12 @@ const Navbar = () => {
               <div
                 className={`${isUserLoggedIn ? "flex" : "hidden"} fle gap-2`}
               >
-                <Link
+                {/* <Link
                   to="/profile"
                   className="bg-gray-900 flex justify-center items-center text-white rounded-md px-3 py-2 text-sm font-medium"
                 >
                   Dashboard
-                </Link>
+                </Link> */}
                 <button
                   onClick={handleLogout}
                   className="sm:bg-gray-900 flex justify-center items-center gap-2 text-black sm:text-white rounded-md px-3 py-2 text-sm font-medium"
@@ -119,38 +116,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
-        {/* Mobile menu, show/hide based on menu state */}
-        {showMenu && (
-          <div className="sm:hidden" id="mobile-menu">
-            <div className="space-y-1 px-2 pb-3 pt-2">
-              <Link
-                to="/"
-                className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-              >
-                Dashboard
-              </Link>
-              <Link
-                to="/team"
-                className="text-gray-700 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-              >
-                Team
-              </Link>
-              <Link
-                to="/projects"
-                className="text-gray-700 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-              >
-                Projects
-              </Link>
-              <Link
-                to="/calendar"
-                className="text-gray-700 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-              >
-                Calendar
-              </Link>
-            </div>
-          </div>
-        )}
       </nav>
     </>
   );
