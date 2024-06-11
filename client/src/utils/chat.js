@@ -4,7 +4,7 @@ const genAI = new GoogleGenerativeAI("AIzaSyDgFJnPSvB-s4_t6bmBKrYFzLnECN8AbrM");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 export default async function run(text, question, type) {
-  let prompt = `Based on the text extracted from the PDF file, ${text}, what is the answer to the question ${question}? and do not include any thing like "based on this or that" or "based on the text extracted from the PDF file" unless the question's answer is not in the text.`;
+  let prompt = `Based on the text extracted from the PDF file, ${text}, give me  the answer to the question ${question} and do not include any thing like "based on this or that" or "based on the text extracted from the PDF file" unless the question's answer is not in the text`;
 
   if (type) {
     prompt = prompt.replace(

@@ -11,6 +11,8 @@ import UserContextProvider, {
 import chat from "../utils/chat";
 import axios from "axios";
 import { ChatContext } from "../context/ChatContextProvider";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const Chat = () => {
   const navigate = useNavigate();
@@ -87,7 +89,9 @@ const Chat = () => {
                         >
                           <b>{message.author}</b>
                           <p className="whitespace-pre-wrap text-sm">
-                            {message.text}
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                              {message.text}
+                            </ReactMarkdown>
                           </p>
                         </div>
                       </div>
