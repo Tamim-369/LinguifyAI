@@ -97,8 +97,17 @@ const Chat = () => {
                       </div>
                     ))}
                     {loadingChat && (
-                      <div className="flex items-center justify-center">
-                        <TbLoader2 className="animate-spin text-3xl" />
+                      <div className={`flex items-start justify-start`}>
+                        <div className={`bg-white shadow-lg rounded-lg p-2`}>
+                          <div className="flex gap-2 ">
+                            <img
+                              src="/loading.gif"
+                              alt=""
+                              srcset=""
+                              className="w-8 h-8"
+                            />
+                          </div>
+                        </div>
                       </div>
                     )}
                     <div ref={messagesEndRef}></div>
