@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -6,7 +7,7 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: [true, "Please provide a email"],
+    required: [true, "Please provide an email"],
     unique: true,
   },
   password: {
@@ -28,6 +29,48 @@ const userSchema = new mongoose.Schema({
   },
   verifyTokenExpiry: {
     type: Date,
+  },
+  subscription: {
+    status: {
+      type: String,
+      enum: ["active", "inactive", "canceled"],
+      default: "inactive",
+    },
+    planId: {
+      type: String,
+      required: true,
+    },
+    startDate: {
+      type: Date,
+      default: Date.now,
+    },
+    endDate: {
+      type: Date,
+    },
+    paymentMethod: {
+      type: String,
+    },
+    paymentHistory: [
+      {
+        transactionId: {
+          type: String,
+          required: true,
+        },
+        amount: {
+          type: Number,
+          required: true,
+        },
+        date: {
+          type: Date,
+          default: Date.now,
+        },
+        status: {
+          type: String,
+          enum: ["success", "failed", "pending"],
+          default: "pending",
+        },
+      },
+    ],
   },
 });
 

@@ -7,10 +7,13 @@ import userRouter from "./routes/user.routes.js";
 import inputRouter from "./routes/input.routes.js";
 import http from "http";
 import { Server } from "socket.io";
+import plansRouter from "./routes/plans.routes.js";
+import axios from "axios";
+
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 const server = http.createServer(app);
 const __dirname = path.resolve();
 const io = new Server(server, {
@@ -21,14 +24,13 @@ const io = new Server(server, {
 });
 app.use(cors());
 app.use(express.static(path.join(__dirname, "/client/dist")));
-app.use(fileUpload()); // Initialize file upload middleware
-
+app.use(fileUpload());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/users", userRouter);
 app.use("/api/input", inputRouter);
-
+app.use("/api/plans", plansRouter);
 io.on("connection", (socket) => {
   console.log(` User connected:${socket.id}`);
   socket.on("disconnect", () => {

@@ -9,22 +9,21 @@ import { useEffect, useState } from "react";
 import Chat from "./pages/Chat";
 import Home from "./pages/Home";
 import UserContextProvider from "./context/UserContextProvider";
+import Payment from "./pages/plan/Subscribe";
 const App = () => {
   return (
-    <BrowserRouter>
-      <UserContextProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/dashboard" element={<DataInput />} /> */}
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/verifyemail" element={<Verify />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/reset" element={<Reset />} />
-        </Routes>
-      </UserContextProvider>
-    </BrowserRouter>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/subscribe" element={<Payment />} />
+        <Route path="/verifyemail" element={<Verify />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/reset" element={<Reset />} />
+      </Routes>
+    </>
   );
 };
 
